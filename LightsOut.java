@@ -2,14 +2,17 @@
 
 public class LightsOut{
 	private int size = 0;
+	private int step = 0;
 	private boolean[][] map;
 	public LightsOut(){
 		setSize(3);
+		step = 0;
 		init();
 	}
 
 	public LightsOut(int intSize){
 		setSize(intSize);
+		step = 0;
 		init();
 	}
 	//To initialie game map.
@@ -32,6 +35,7 @@ public class LightsOut{
 	public boolean[][] getMap(){return map;}
 
 	public void light(FF.Point point){
+		step++;
 		FF.Point[] vector = new FF.Point[]{ new FF.Point(-1,0), new FF.Point(0,-1), new FF.Point(0,0), new FF.Point(0,1), new FF.Point(1,0)};
 		for (int i = 0 ; i < vector.length ; i++){
 			int row = point.i + vector[i].i;
@@ -40,7 +44,24 @@ public class LightsOut{
 				map[row][col] = !map[row][col];
 			}
 		}
+		if(isGameOver()){
+			gameOver();
+		}
+	}
 
+	public boolean isGameOver(){
+		for (boolean[] bA : map){
+			for (boolean b : bA){
+				if (!b) return false;
+			}
+		}
+		return true;
+	}
+	
+	private void gameOver(){
+		System.out.println("Game Over");
+		System.out.printf("You spent %d step.\n", step);
+		
 	}
 
 	public void showMap(){

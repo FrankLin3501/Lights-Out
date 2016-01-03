@@ -6,17 +6,16 @@ public class LightsOut{
 	private boolean[][] map;
 	public LightsOut(){
 		setSize(3);
-		step = 0;
 		init();
 	}
 
 	public LightsOut(int intSize){
 		setSize(intSize);
-		step = 0;
 		init();
 	}
 	//To initialie game map.
 	private void init(){
+		step = 0;
 		map = new boolean[size][size];
 		for (int i = 0 ; i < size ; i++){
 			for (int j = 0 ; j < size ; j++){
@@ -25,6 +24,13 @@ public class LightsOut{
 		}
 
 	}
+
+	public void start(){
+		System.out.println("--------Game Start--------");
+		System.out.println("Input example: {i} {j}.");
+		init();
+	}
+
 	//To get map size.
 	public int getSize(){return size;}
 	private void setSize(int intSize){

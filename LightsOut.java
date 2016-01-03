@@ -68,7 +68,7 @@ public class LightsOut{
 		for (int i = 0 ; i < size ; i++){
 			for (int j = 0 ; j < size ; j++){
 				System.out.print(map[i][j]?"■":"□");
-				System.out.print(j==size-1?"\n":"\t");
+				System.out.print(j==size-1?"\n":" ");
 			}
 		}
 		System.out.println();
